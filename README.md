@@ -157,15 +157,15 @@ Rivers are listed on every hex that has the edge, whatever its landform, because
 The `river` flag stays land-only, as the terrain model says: a land hex has it exactly when its `rivers` list isn't empty.
 
 An edge whose other hex is a fill or border hex is listed on that hex too; an edge whose other hex is off the map is listed once.
-On Panama, every river edge lies between two source hexes, so each of the 4,667 edges is listed exactly twice.
+On Panama, every river edge lies between two source hexes, so each of the 4,644 edges is listed exactly twice.
 
 ### Size classes
 
 | Drainage area      | `size`        | Edges on Panama |
 | ------------------ | ------------- | --------------: |
-| under 250 km²      | `stream`      |   2,969 (63.6%) |
-| 250 to 2,000 km²   | `river`       |   1,466 (31.4%) |
-| 2,000 km² and more | `great-river` |     232 (5.0%)  |
+| under 250 km²      | `stream`      |   2,952 (63.6%) |
+| 250 to 2,000 km²   | `river`       |   1,466 (31.6%) |
+| 2,000 km² and more | `great-river` |     226 (4.9%)  |
 
 A drainage area exactly on a break takes the larger class.
 The breaks come from the distribution of drainage areas (from 50 to 10,764 km², median 167 km²): a stream is below about the 64th percentile and a great river at about the 95th, which picks out the trunks of the largest rivers (the lower Tuira, Bayano, Chagres, and Santa María).
@@ -188,7 +188,7 @@ It checks the terrain model's valid combinations (see the root README's "Terrain
 
 ## Results
 
-On the Panama climate (`hmz2bio` v0.1.0) and rivers (`hmz2riv` v0.1.0):
+On the Panama climate (`hmz2bio` v0.2.0) and rivers (`hmz2riv` v0.2.0):
 
 | Measurement | Without border | With `-border` |
 | ----------- | -------------: | -------------: |
@@ -223,22 +223,22 @@ The border adds only deep salt water, so every other count is the same with and 
 | Flag       | Hexes |
 | ---------- | ----: |
 | Coast      | 2,330 (1,043 land, and 1,287 water: 1,284 source and 3 fill) |
-| River      | 4,144 |
+| River      | 4,135 |
 | Volcano    | 3 |
 | Inland sea | 127 |
 | Impassable | 318 |
 
 | River size    | Edges | Hex sides |
 | ------------- | ----: | --------: |
-| `stream`      | 2,969 |     5,938 |
+| `stream`      | 2,952 |     5,904 |
 | `river`       | 1,466 |     2,932 |
-| `great-river` |   232 |       464 |
+| `great-river` |   226 |       452 |
 
 - The surfaces and biomes of the 9,914 land hexes are `hmz2bio`'s, unchanged.
 - Land elevations run from 2 m to 3,112 m (the Barú summit hex), cliffs from 17 m to 3,039 m, and lakes from 28 m to 78 m.
 - 67 cliffs had no median; one pass gave all of them an elevation.
 - Recomputing distances over the map, fill hexes included, would change no source hex's depth band.
-- Every river edge lies between two source hexes, so none touches a fill or border hex and each is listed on exactly two hexes. 4,322 hexes have rivers, including 106 salt-water hexes (river mouths), 63 lake hexes, and 9 cliffs; none of those three has the `river` flag.
+- Every river edge lies between two source hexes, so none touches a fill or border hex and each is listed on exactly two hexes. 4,306 hexes have rivers, including 99 salt-water hexes (river mouths), 63 lake hexes, and 9 cliffs; none of those three has the `river` flag.
 - Land and cliffs reach the map's edges: the top row has 1 hills hex and 2 cliffs, the last column 1 hills hex and 2 cliffs, and the bottom row 2 cliffs. With `-border`, deep water is next to them.
 
 Every count was cross-checked against an independent Python calculation, written from this README, with no mismatches.
@@ -255,9 +255,9 @@ Every count was cross-checked against an independent Python calculation, written
   "border": 0,
   "hex_km": 10,
   "sources": [
-    { "file_name": "pandemokh-a48-climate.json", "tool": "hmz2bio", "version": "0.1.0" },
+    { "file_name": "pandemokh-a48-climate.json", "tool": "hmz2bio", "version": "0.2.0" },
     { "file_name": "pandemokh-a48-terrain.json", "tool": "hmz2ter", "version": "0.1.0" },
-    { "file_name": "pandemokh-a48-rivers.json", "tool": "hmz2riv", "version": "0.1.0" }
+    { "file_name": "pandemokh-a48-rivers.json", "tool": "hmz2riv", "version": "0.2.0" }
   ],
   "climate": { "top_lat_deg": 27, "bottom_lat_deg": 7 },
   "hexes": [
