@@ -216,7 +216,7 @@ The border adds only deep salt water, so every other count is the same with and 
 
 | Depth   | Salt-water hexes | Of them fill hexes | Elevation |
 | ------- | ---------------: | -----------------: | --------: |
-| Shallow |            9,113 |                 29 | −5 m (9,015), 0 m (the 98 inland-sea hexes) |
+| Shallow |            9,113 |                 29 | −5 m (8,927), 0 m (the 186 inland-sea hexes) |
 | Open    |            2,236 |                 11 | −50 m |
 | Deep    |            2,008 (4,696 with the border) | 13 | −500 m |
 
@@ -225,7 +225,7 @@ The border adds only deep salt water, so every other count is the same with and 
 | Coast      | 2,318 (1,037 land, and 1,281 water: 1,280 source and 1 fill) |
 | River      | 4,119 |
 | Volcano    | 3 |
-| Inland sea | 98 |
+| Inland sea | 186 |
 | Impassable | 320 |
 
 | River size    | Edges | Hex sides |
@@ -256,7 +256,7 @@ Every count was cross-checked against an independent Python calculation, written
   "hex_km": 10,
   "sources": [
     { "file_name": "pandemokh-a48-climate.json", "tool": "hmz2bio", "version": "0.3.0" },
-    { "file_name": "pandemokh-a48-terrain.json", "tool": "hmz2ter", "version": "0.2.0" },
+    { "file_name": "pandemokh-a48-terrain.json", "tool": "hmz2ter", "version": "0.3.0" },
     { "file_name": "pandemokh-a48-rivers.json", "tool": "hmz2riv", "version": "0.3.0" }
   ],
   "climate": { "top_lat_deg": 27, "bottom_lat_deg": 7 },
