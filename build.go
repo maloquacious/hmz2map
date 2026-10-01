@@ -70,17 +70,17 @@ type frame struct {
 }
 
 func newFrame(g hmz2ele.Grid, border int) frame {
-	return frame{g: g, border: border, columns: g.Columns + 1 + 2*border, rows: g.Rows + 2*border}
+	return frame{g: g, border: border, columns: g.Columns + 2*border, rows: g.Rows + 2*border}
 }
 
 // toMap returns the map coordinates of a source hex.
 func (f frame) toMap(col, row int) (int, int) {
-	return col + 1 + f.border, row + f.border
+	return col + f.border, row + f.border
 }
 
 // toSource returns the source coordinates of a map hex.
 func (f frame) toSource(col, row int) (int, int) {
-	return col - 1 - f.border, row - f.border
+	return col - f.border, row - f.border
 }
 
 func (f frame) onMap(col, row int) bool {

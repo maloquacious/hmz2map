@@ -245,15 +245,15 @@ func TestPanama(t *testing.T) {
 		if err := Validate(m); err != nil {
 			t.Fatalf("border %d: %v", border, err)
 		}
-		wantCols, wantRows := 107+2*border, 222+2*border
+		wantCols, wantRows := 106+2*border, 222+2*border
 		if m.Columns != wantCols || m.Rows != wantRows || len(m.Hexes) != wantCols*wantRows {
 			t.Fatalf("border %d: map is %d × %d with %d hexes, want %d × %d", border, m.Columns, m.Rows, len(m.Hexes), wantCols, wantRows)
 		}
-		if rep.Kinds[KindSource] != len(doc.Hexes) || rep.Kinds[KindFill] != 275 {
+		if rep.Kinds[KindSource] != len(doc.Hexes) || rep.Kinds[KindFill] != 53 {
 			t.Errorf("border %d: kinds %v", border, rep.Kinds)
 		}
 		for _, s := range doc.Hexes {
-			h := m.At(s.Col+1+border, s.Row+border)
+			h := m.At(s.Col+border, s.Row+border)
 			if string(h.Landform) != string(s.Landform) || string(h.Biome) != string(s.Biome) || string(h.Depth) != string(s.Depth) {
 				t.Fatalf("border %d: source (%d, %d) %s is map (%d, %d) %s", border, s.Col, s.Row, s.Landform, h.Col, h.Row, h.Landform)
 			}
@@ -275,7 +275,7 @@ func TestPanama(t *testing.T) {
 				col, row int
 				side     Side
 			}{{e.Col, e.Row, Sides[own.index]}, {nc, nr, Sides[own.index].Opposite()}} {
-				h := m.At(sh.col+1+border, sh.row+border)
+				h := m.At(sh.col+border, sh.row+border)
 				k := slices.IndexFunc(h.Rivers, func(r River) bool { return r.Side == sh.side })
 				if k < 0 {
 					t.Fatalf("edge %+v: missing on source (%d, %d) side %s", e, sh.col, sh.row, sh.side)
